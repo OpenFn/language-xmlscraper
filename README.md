@@ -1,25 +1,10 @@
-Language Google Sheets [![Build Status](https://travis-ci.org/OpenFn/language-googlesheets.svg?branch=master)](https://travis-ci.org/OpenFn/language-googlesheets)
+Language XML Scraper [![Build Status](https://travis-ci.org/OpenFn/language-xmlscraper.svg?branch=master)](https://travis-ci.org/OpenFn/language-xmlscraper)
 ======================
 
-Language Pack for building expressions and operations to make Google Sheets API calls.
+Language Pack for scraping XML data from websites.
 
 Documentation
 -------------
-## appendRows
-
-`https://sheets.googleapis.com/v4/spreadsheets/spreadsheetId/values/Sheet1!A1:E1:append?valueInputOption=USER_ENTERED`
-
-```json
-{
-  "range": "Sheet1!A1:E1",
-  "majorDimension": "ROWS",
-  "values": [
-    ["Door", "$15", "2", "3/15/2016"],
-    ["Engine", "$100", "1", "3/20/2016"],
-  ],
-}
-```
-
 
 #### sample configuration
 ```json
@@ -33,7 +18,7 @@ Documentation
 
 #### sample fetch expression
 ```js
-appendValues("spreadsheetId", {
+fetch("spreadsheetId", {
   "getEndpoint": "api/v1/forms/data/wide/json/mod_coach",
   "query": function(state) {
       return { "date": dataValue("_json[(@.length-1)].SubmissionDate")(state) }
