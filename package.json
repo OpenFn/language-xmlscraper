@@ -1,7 +1,7 @@
 {
-  "name": "language-googlesheets",
+  "name": "language-xmlscraper",
   "version": "0.1.0",
-  "description": "A Google Sheets Language Pack for OpenFn",
+  "description": "A Webscraper Language Pack for OpenFn",
   "main": "lib/index.js",
   "scripts": {
     "build": "make",
@@ -14,8 +14,10 @@
     "lib/"
   ],
   "dependencies": {
-    "language-common": "github:openfn/language-common#v0.0.5",
-    "request": "^2.72.0"
+    "language-common": "github:openfn/language-common#v0.2.4",
+    "request": "^2.72.0",
+    "jsdom": "^11.6.2",
+    "cheerio": "1.0.0-rc.2"
   },
   "devDependencies": {
     "assertion-error": "^1.0.1",
