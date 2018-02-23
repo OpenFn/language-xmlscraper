@@ -15,8 +15,8 @@
   ],
   "dependencies": {
     "language-common": "github:openfn/language-common#v0.2.4",
+    "language-http": "github:openfn/language-http#v2.0.0",
     "request": "^2.72.0",
-    "jsdom": "^11.6.2",
     "cheerio": "1.0.0-rc.2"
   },
   "devDependencies": {
