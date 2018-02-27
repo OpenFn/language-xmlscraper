@@ -1,4 +1,4 @@
-import { execute as commonExecute, expandReferences } from 'language-common';
+import { execute as commonExecute, expandReferences, composeNextState } from 'language-common';
 import request from 'request';
 import cheerio from 'cheerio';
 
@@ -34,9 +34,10 @@ export function execute(...operations) {
  *   parse(params)
  * @function
  * @param {object} params - data to write to the row
+ * @param {function} script - callback function
  * @returns {Operation}
  */
-export function parse(params) {
+export function parse(params, script) {
 
   return state => {
 
@@ -48,8 +49,18 @@ export function parse(params) {
 
     const { body } = expandReferences(params)(state);
 
-    const dom = cheerio.load(body)
+    const $ = cheerio.load(body)
 
+    if(script) {
+      const result = script($)
+      try {
+        return composeNextState(state, JSON.parse(result))
+      } catch(e) {
+        return composeNextState(state, {body: result})
+      }
+    } else {
+      return composeNextState(state, {body: $.html()})
+    }
   }
 }
 
