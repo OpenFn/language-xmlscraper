@@ -1,6 +1,7 @@
 import { execute as commonExecute, expandReferences, composeNextState } from 'language-common';
 import request from 'request';
 import cheerio from 'cheerio';
+import cheerioTableparser from 'cheerio-tableparser';
 
 /** @module Adaptor */
 
@@ -49,17 +50,19 @@ export function parse(params, script) {
 
     const { body } = expandReferences(params)(state);
 
-    const $ = cheerio.load(body)
+    const $ = cheerio.load(body);
+    cheerioTableparser($);
 
     if(script) {
       const result = script($)
       try {
-        return composeNextState(state, JSON.parse(result))
+        const r = JSON.parse(result);
+        return composeNextState(state, r)
       } catch(e) {
         return composeNextState(state, {body: result})
       }
     } else {
-      return composeNextState(state, {body: $.html()})
+      return composeNextState(state, {body: body})
     }
   }
 }
