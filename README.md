@@ -1,5 +1,10 @@
-Language XML Scraper [![Build Status](https://travis-ci.org/OpenFn/language-xmlscraper.svg?branch=master)](https://travis-ci.org/OpenFn/language-xmlscraper)
-======================
+1ed7546# _⚠️ MOVED TO [OpenFn/adaptors](https://github.com/OpenFn/adaptors)! ⚠️_
+
+**N.B.: New versions are available at:
+https://github.com/OpenFn/adaptors/tree/main/packages/xml**
+
+# Language XML Scraper (Archived)
+
 
 Language Pack for scraping XML data from websites.
 
